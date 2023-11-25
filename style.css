@@ -1,0 +1,191 @@
+:root {
+    --Dark-cyan: hsl(180, 29%, 50%);
+    --Light-Grayish-Cyan: hsl(180, 52%, 96%);  /*   (Background)       */
+    --Light-Grayish-Cyan-2: hsl(180, 31%, 95%); /*    (Filter Tablets)   */
+    --Dark-Grayish-Cyan: hsl(180, 8%, 52%);
+    --Very-Dark-Grayish-Cyan: hsl(180, 14%, 20%);
+    --job-shadow: 0 15px 20px -5px hsl(189 81% 28% / 15%);
+}
+body {
+    font-family: 'League Spartan' !important;
+    font-size: 15px;
+    background-color: var(--Light-Grayish-Cyan);
+}
+
+/* Header Styling */
+.header {
+    min-height: 150px;
+    background-image: url(images/bg-header-desktop.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-color: var(--Dark-cyan);
+    transition: all .5s ease;
+}
+@media (max-width: 500px) {
+    .header {
+        background-image: url(images/bg-header-mobile.svg);
+    }
+}
+
+/* Main Content Styling */
+
+/* FilterBar Styling */
+.filter_bar {
+    position: absolute;
+    left: 0;
+    top: -5rem;
+    background-color: #fff;
+    left: 50%;
+    transform: translateX(-50%);
+    min-height: 65px;
+    box-shadow: var(--job-shadow);
+}
+
+.filter_bar .selected {
+    background-color: var(--Light-Grayish-Cyan);
+    width: fit-content;
+    padding: 4px 8px;
+    color: var(--Dark-cyan);
+    font-weight: 600;
+    height: 28px;
+    border-radius: 5px 0 0 5px;
+}
+
+.filter_bar .remove_icon_container {
+    background-color: var(--Dark-cyan);
+    padding: 4px 8px;
+    height: 28px;
+    cursor: pointer;
+    border-radius: 0 5px 5px 0;
+    transition: all .3s ease;
+}
+.filter_bar .remove_icon_container:hover {
+    background-color: var(--Very-Dark-Grayish-Cyan);
+}
+.filter_bar .clear_selected {
+    color: var(--Dark-cyan);
+    font-weight: 600;
+    text-decoration: none;
+}
+.filter_bar .clear_selected:hover {
+    text-decoration: underline;
+}
+
+/* Job Styling */
+
+.main .job {
+    background-color: #fff;
+    position: relative;
+    box-shadow: var(--job-shadow);
+}
+.hide {
+    animation: slideAnimation 1s forwards;
+}
+@keyframes slideAnimation {
+    from {
+        transform: translateX(0);
+    }
+    to {
+      transform: translateX(-9999px);
+      position: absolute;
+      z-index: 1;
+    }
+}
+.main .job[data-featured="true"]::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background-color: var(--Dark-cyan);
+    border-radius: 5px 0 0 5px;
+}
+
+.main .job .profile_image {
+    width: fit-content;
+}
+.main .job .job-description .top .company {
+    color: var(--Dark-cyan);
+    font-weight: 700;
+    font-size: 1.05rem;
+}
+.main .job .job-description .top .new,
+.main .job .job-description .top .featured {
+    color: #fff;
+    padding: 5px 10px;
+    font-size: .85rem;
+}
+.main .job .job-description .top .new {
+    background-color: var(--Dark-cyan);
+}
+.main .job .job-description .top .featured {
+    background-color: #000;
+}
+.main .job .job-description .mid {
+    margin-top: 0.6rem;
+}
+.main .job .job-description .mid .job-title {
+    font-weight: 700;
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+.job-title:hover {
+    color: var(--Dark-cyan);
+}
+.main .job .job-description .bottom {
+    color: var(--Dark-Grayish-Cyan);
+    font-weight: 400;
+}
+.main .job .job-description .bottom span:not(:last-child) {
+    margin-right: 10px;
+}
+.main .job .job-description .bottom .seprator {
+    font-weight: 600;
+}
+.main .job .skills p{
+    margin-right: 1rem;
+    background-color: var(--Light-Grayish-Cyan);
+    color: var(--Dark-cyan);
+    font-weight: 600;
+    padding: 5px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+.main .job .skills p:hover {
+    background-color: var(--Dark-cyan);
+    color: #fff;
+}
+
+
+@media (max-width: 760px) {
+    .job .profile_image {
+        position: absolute;
+        top: -45px;
+        width: 80px !important;
+        
+    }
+    .job .job-description {
+        margin-top: 2rem;
+        position: relative;
+    }
+    .job .job-description::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -9px;
+        width: 100%;
+        height: 2px;
+        background-color: var(--Dark-Grayish-Cyan);
+        opacity: 30%;
+    }
+}
+
+@media (max-width: 991px) and (min-width: 768px){
+    .job .row .skills {
+        margin-left: 113px;
+    }
+}
